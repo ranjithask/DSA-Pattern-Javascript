@@ -17,3 +17,59 @@ const pattern_01 = (n) => {
 }
 
 pattern_01(5);
+
+
+2. * 
+   * * 
+   * * * 
+   * * * * 
+   * * * * *
+
+const pattern_02 = (n) => {
+   for (let i = 0; i < n; i++) {
+        let row = '';
+        for (let j = 0; j <= i; j++) {
+            row += '* ';
+        }
+       console.log(row);
+    }
+}
+
+pattern_02(5);
+
+3. 1 
+   1 2 
+   1 2 3 
+   1 2 3 4 
+   1 2 3 4 5 
+
+const pattern_03 = (n) => {
+   for (let i = 1; i <= n; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += j+' ' ;
+        }
+       console.log(row);
+    }
+}
+
+pattern_03(5);
+
+4. 1 
+   2 2 
+   3 3 3 
+   4 4 4 4 
+   5 5 5 5 5 
+
+const pattern_04 = (n) => {
+   for (let i = 1; i <= n; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += i+' ' ;
+        }
+       console.log(row);
+    }
+}
+
+pattern_04(5);
+
