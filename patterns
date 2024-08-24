@@ -1,0 +1,19 @@
+1.  * * * * *
+    * * * * *
+    * * * * *
+    * * * * *
+    * * * * *
+    * * * * *
+
+code:
+const pattern_01 = (n) => {
+   for (let i = 0; i < n; i++) {
+        let row = '';
+        for (let j = 0; j < n; j++) {
+            row += '* ';
+        }
+       console.log(row);
+    }
+}
+
+pattern_01(5);
