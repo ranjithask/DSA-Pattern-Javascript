@@ -1,1 +1,91 @@
+04. Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+Example 1:
+
+Input: nums = [2,2,1]
+Output: 1
+Example 2:
+
+Input: nums = [4,1,2,1,2]
+Output: 4
+Example 3:
+
+Input: nums = [1]
+Output: 1
+
+solution 01: time complexity O(n) and space complixity is o(1)
+
+const singleNumber = (nums) => { 
+  return nums.reduce((a,b)=> a^= b);
+}
+
+solution 02 : 0(n) time complixity and space complixity o(n)
+
+const singleNumber = (nums) => { 
+  const seen = new Set();
+  for(let num of nums) {
+    if(seen.has(num)){
+       seen.delete(num)
+    } else {
+      seen.add(num)
+    }
+  }
+return [...seen][0]
+}
+
+solution 03:  time complexity O(n) and space complixity is o(n)
+
+const singleNumber = (nums) => { 
+ let arr = nums.sort((a,b)=> a-b)
+    for(let i= 0; i <= arr.length-1; i+=2) {
+        if(arr[i] !== arr[i+1]) {
+            return arr[i]
+        }
+    }
+}
+
+problem:05
+
+You are climbing a staircase. It takes n steps to reach the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+ 
+
+Example 1:
+
+Input: n = 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+Example 2:
+
+Input: n = 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+
+
+solution 01: o(n) time complexity and space complexity o(1)
+
+const climbStairs = (n) {
+ if(n <= 2) return n;
+ let first_step =1;
+    let second_step =2;
+    for(i=3; i<=n; i++) {
+        let sum = first_step + second_step;
+        first_step =second_step;
+        second_step= sum;
+    }
+    return  second_step;
+}
+
+solution 02:  o(n) time complexity and space complexity o(n)
+const climbStairs = (n) {
+   return climbStairs(n-1) + climbStairs(n-2);
+}
