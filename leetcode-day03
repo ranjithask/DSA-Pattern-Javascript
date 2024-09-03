@@ -1,1 +1,117 @@
+05. You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+ 
+
+Example 1:
+
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+Example 2:
+
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+solution 01: time complexity o(n) and space complexity o(1)
+
+const maxProfit = (prices) => {
+     let maxProfit = 0;
+    let minProfit= Infinity;
+   for(let i=0; i< prices.length; i++) {
+    if(prices[i] < minProfit) {
+        minProfit= prices[i] ;
+    } else if(prices[i]  - minProfit > maxProfit) {
+       maxProfit = prices[i]  - minProfit;
+    }
+   }
+   return maxProfit;
+    
+}
+
+06.Given an integer array nums, handle multiple queries of the following type:
+
+Calculate the sum of the elements of nums between indices left and right inclusive where left <= right.
+Implement the NumArray class:
+
+NumArray(int[] nums) Initializes the object with the integer array nums.
+int sumRange(int left, int right) Returns the sum of the elements of nums between indices left and right inclusive (i.e. nums[left] + nums[left + 1] + ... + nums[right]).
+ 
+
+Example 1:
+
+Input
+["NumArray", "sumRange", "sumRange", "sumRange"]
+[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+Output
+[null, 1, -1, -3]
+
+Explanation
+NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+numArray.sumRange(0, 2); // return (-2) + 0 + 3 = 1
+numArray.sumRange(2, 5); // return 3 + (-5) + 2 + (-1) = -1
+numArray.sumRange(0, 5); // return (-2) + 0 + 3 + (-5) + 2 + (-1) = -3
+
+solution : space complexity o(1) time complexity o(n)
+
+var NumArray = function(nums) {
+    this.num = nums
+    
+};
+NumArray.prototype.sumRange = function(left, right) {
+    let sum = 0;
+    for(i=left; i<=right; i++ ) {
+        sum += this.num[i];
+
+    }
+
+    return sum;
+    
+};
+
+
+07: Given an integer n, return an array ans of length n + 1 such that for each i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.
+
+Example 1:
+
+Input: n = 2
+Output: [0,1,1]
+Explanation:
+0 --> 0
+1 --> 1
+2 --> 10
+Example 2:
+
+Input: n = 5
+Output: [0,1,1,2,1,2]
+Explanation:
+0 --> 0
+1 --> 1
+2 --> 10
+3 --> 11
+4 --> 100
+5 --> 101
+
+solution 01: o(log n) time complexity and space complexity is o(n)
+var countBits = function(n) {
+  const arr = new Array(n).fill(0);
+  for(let i=0; i<= n ; i++) {
+     arr[i] = i.toString(2).split('0').join('').length;
+  }
+  return arr
+};
+
+solution 02: spaceo(n) and time o(n);
+  const arr = new Array(n).fill(0);
+  for(let i=0; i<= n ; i++) {
+     arr[i] = arr[i >> 1 ] + (i &1)
+  }
+  return arr
+};
+
 
