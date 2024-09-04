@@ -38,3 +38,34 @@ function hasCycle(head) {
 
     return false;  // No cycle
 }
+
+
+problem -09: 
+Given the head of a singly linked list, return the middle node of the linked list.
+
+If there are two middle nodes, return the second middle node.
+
+solution 01: space o(1) and time o(n)
+
+var middleNode = function(head) {
+   let fast= head;
+   let slow = head;
+   while( fast && fast.next) {
+    fast= fast.next.next;
+    slow= slow.next;
+
+   }
+
+   return slow;
+}
+
+solution 02: array based approach space o(n) and time o(n)
+var middleNode = function(head) {
+ let nodes=[];
+ let current = head;
+ while(current !== null){
+     nodes.push(current);
+      current= current.next;
+ }
+ return nodes[Math.floor(nodes.length/2)]   
+};
